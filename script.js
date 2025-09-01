@@ -1,32 +1,3 @@
-// Wewnątrz obiektu translations.pl
-pl: {
-    // ... poprzednie tłumaczenia ...
-    // NOWE TŁUMACZENIA DLA MODALA
-    rulesModalTitle: "Zasady Serwera",
-    rulesModalFooter: "Nieznajomość zasad nie zwalnia z ich przestrzegania.",
-    rules: [
-        "Graczy nie da się zabić dzięki pluginom. Nie próbuj tego obchodzić- patrz punkt 4.",
-        "Twój loot, twoja sprawa. Trzymaj bazę zamkniętą i zabezpieczoną- gramy vanilla.",
-        "Bez griefingu. Nie blokuj baz, monumentów ani surowców.",
-        "Zero cheatów i exploitów. Złapiemy Cię = perm wipe.",
-        "Masz problem? Otwórz ticketa na Discordzie- admin odpisze."
-    ]
-},
-// Wewnątrz obiektu translations.en
-en: {
-    // ... poprzednie tłumaczenia ...
-    // NOWE TŁUMACZENIA DLA MODALA
-    rulesModalTitle: "Server Rules",
-    rulesModalFooter: "Not knowing the rules does not exempt you from them.",
-    rules: [
-        "Players are unkillable by plugins. Don’t try to bypass it- see rule 4.",
-        "Your loot, your problem. Keep your base locked and secured- vanilla style.",
-        "No griefing. Don’t block bases, monuments, or resources.",
-        "No cheating, no exploits. Caught once = perm wipe.",
-        "Got a problem? Open a ticket on Discord- an admin will respond."
-    ]
-}
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // === SEKCJA TŁUMACZEŃ (I18N) ===
@@ -66,7 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
             galleryTitle: "Społeczności",
             galleryDesc: "Podziwiaj niesamowite konstrukcje stworzone przez naszych graczy.",
             // Stopka
-            footerText: "© 2025 ALT+F4 PvE. Serwer stworzony przez graczy, dla graczy."
+            footerText: "© 2025 ALT+F4 PvE. Serwer stworzony przez graczy, dla graczy.",
+            // Modal zasad
+            rulesModalTitle: "Zasady Serwera",
+            rulesModalFooter: "Nieznajomość zasad nie zwalnia z ich przestrzegania.",
+            rules: [
+                "Graczy nie da się zabić dzięki pluginom. Nie próbuj tego obchodzić- patrz punkt 4.",
+                "Twój loot, twoja sprawa. Trzymaj bazę zamkniętą i zabezpieczoną- gramy vanilla.",
+                "Bez griefingu. Nie blokuj baz, monumentów ani surowców.",
+                "Zero cheatów i exploitów. Złapiemy Cię = perm wipe.",
+                "Masz problem? Otwórz ticketa na Discordzie- admin odpisze."
+            ]
         },
         en: {
             // Meta
@@ -103,7 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
             galleryTitle: "Gallery",
             galleryDesc: "Admire the incredible structures created by our players.",
             // Footer
-            footerText: "© 2025 ALT+F4 PvE. A server made by players, for players."
+            footerText: "© 2025 ALT+F4 PvE. A server made by players, for players.",
+            // Rules Modal
+            rulesModalTitle: "Server Rules",
+            rulesModalFooter: "Not knowing the rules does not exempt you from them.",
+            rules: [
+                "Players are unkillable by plugins. Don’t try to bypass it- see rule 4.",
+                "Your loot, your problem. Keep your base locked and secured- vanilla style.",
+                "No griefing. Don’t block bases, monuments, or resources.",
+                "No cheating, no exploits. Caught once = perm wipe.",
+                "Got a problem? Open a ticket on Discord- an admin will respond."
+            ]
         }
     };
 
@@ -113,12 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const translatePage = (lang) => {
         document.querySelectorAll('[data-i18n-key]').forEach(el => {
             const key = el.getAttribute('data-i18n-key');
-            el.textContent = translations[lang][key] || key;
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
         });
         document.documentElement.lang = lang;
         document.title = translations[lang].pageTitle;
         
-        // Aktualizacja stylów przełącznika
         if (lang === 'pl') {
             langSwitcherPL.classList.add('active');
             langSwitcherEN.classList.remove('active');
@@ -140,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     langSwitcherPL.addEventListener('click', () => {
         localStorage.setItem('language', 'pl');
         translatePage('pl');
-        // Musimy zrestartować licznik, aby używał poprawnych tłumaczeń
         initializeWipeCountdown('pl'); 
     });
 
@@ -184,7 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 isAdminOnline = adminSteamIDs.some(adminId => onlinePlayerSteamIDs.includes(adminId));
             }
             if (adminStatusEl) {
-                adminStatusEl.textContent = isAdminOnline ? (document.documentElement.lang === 'pl' ? "Dostępni" : "Available") : "Offline";
+                const currentLang = document.documentElement.lang || 'pl';
+                adminStatusEl.textContent = isAdminOnline ? (currentLang === 'pl' ? "Dostępni" : "Available") : "Offline";
                 adminStatusEl.classList.toggle('online', isAdminOnline);
                 adminStatusEl.classList.toggle('offline', !isAdminOnline);
             }
@@ -199,9 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === ZAAWANSOWANA SEKCJA LICZNIKA WIPE ===
     let countdownInterval;
-
     function initializeWipeCountdown(lang) {
-        if (countdownInterval) clearInterval(countdownInterval); // Czyść stary interwał
+        if (countdownInterval) clearInterval(countdownInterval);
 
         const wipeElement = document.getElementById('next-wipe');
         const wipeTypeElement = document.getElementById('wipe-type-label');
@@ -238,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
             wipeTypeElement.textContent = translations[lang][wipeTypeKey];
         };
 
-        // Funkcje pomocnicze licznika
         const getNextForceWipe = (now) => {
             const wipeTimeUTC = { hour: 18, minute: 0, second: 0 };
             let year = now.getUTCFullYear();
@@ -268,9 +258,50 @@ document.addEventListener('DOMContentLoaded', () => {
         countdownInterval = setInterval(updateCountdown, 1000);
     }
     
+    // === LOGIKA OKNA MODALNEGO ZASAD ===
+    const rulesModal = document.getElementById('rules-modal');
+    const openRulesBtn = document.querySelector('a[href="#rules"]');
+    const closeRulesBtn = document.getElementById('close-modal-btn');
+    const rulesList = document.getElementById('rules-list');
+
+    const openModal = () => {
+        const currentLang = document.documentElement.lang || 'pl';
+        const rules = translations[currentLang].rules;
+        
+        rulesList.innerHTML = '';
+        rules.forEach(ruleText => {
+            const li = document.createElement('li');
+            li.textContent = ruleText;
+            rulesList.appendChild(li);
+        });
+        rulesModal.classList.remove('hidden');
+    };
+
+    const closeModal = () => {
+        rulesModal.classList.add('hidden');
+    };
+
+    openRulesBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+    });
+
+    closeRulesBtn.addEventListener('click', closeModal);
+
+    rulesModal.addEventListener('click', (e) => {
+        if (e.target === rulesModal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && !rulesModal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+
     // Inicjalizacja strony
     const initialLang = getInitialLanguage();
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
-
 });
