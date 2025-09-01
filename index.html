@@ -38,11 +38,12 @@
     </header>
 
     <section id="hero">
-        <div id="hero-canvas"><video autoplay muted loop playsinline id="bg-video">
-    <source src="https://files.facepunch.com/paddy/20210324/rust_site2021_hero_v002.mp4" type="video/mp4">
-  </video></div>
+        <div id="hero-canvas">
+            <video autoplay muted loop playsinline id="bg-video">
+                <source src="https://files.facepunch.com/paddy/20210324/rust_site2021_hero_v002.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-content">
-
             <h1 class="animate-on-load" data-i18n-key="heroTitle"></h1>
             <h2 class="animate-on-load" data-i18n-key="heroSubtitle"></h2>
             <p class="animate-on-load" data-i18n-key="heroDescription"></p>
@@ -99,9 +100,7 @@
         </section>
 
         <section id="gallery" class="content-section">
-            <div class="parallax-bg"><video autoplay muted loop playsinline id="bg-video">
-    <source src="https://files.facepunch.com/paddy/20210324/rust_site2021_hero_v002.mp4" type="video/mp4">
-  </video></div>
+            <div class="parallax-bg"></div>
             <div class="container">
                 <h2 class="section-title animate-on-scroll"><span data-i18n-key="galleryTitleSpan"></span> <span data-i18n-key="galleryTitle"></span></h2>
                 <p class="section-subtitle animate-on-scroll" data-i18n-key="galleryDesc"></p>
@@ -128,26 +127,25 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <div id="rules-modal" class="modal-overlay hidden">
-    <div class="modal-content">
-        <button id="close-modal-btn" class="modal-close-btn">
-            <span class="icon material-icons">close</span>
-        </button>
-        <div class="modal-header">
-            <span class="icon material-icons">gavel</span>
-            <h2 data-i18n-key="rulesModalTitle"></h2>
-        </div>
-        <div class="modal-body">
-            <ul id="rules-list">
-                </ul>
-        </div>
-        <div class="modal-footer">
-            <span data-i18n-key="rulesModalFooter"></span>
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">
+                <span class="icon material-icons">close</span>
+            </button>
+            <div class="modal-header">
+                <span class="icon material-icons">gavel</span>
+                <h2 data-i18n-key="rulesModalTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <ul id="rules-list">
+                    </ul>
+            </div>
+            <div class="modal-footer">
+                <span data-i18n-key="rulesModalFooter"></span>
+            </div>
         </div>
     </div>
-</div>
-<script src="script.js"></script>
+    
+    <script src="script.js"></script>
 </body>
-
 </html>
