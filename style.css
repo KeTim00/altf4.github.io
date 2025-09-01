@@ -1,0 +1,589 @@
+/* --- GLOBALNE USTAWIENIA I ZMIENNE (NOWA, POPRAWIONA PALETA Z AKCENTEM RUST) --- */
+:root {
+    --color-bg-main: #1A1A1A;      /* Głęboka czerń ze słuchawek */
+    --color-bg-surface: #2c2521;  /* Ciemny, lekko nasycony brąz na karty/panele */
+    --color-bg-stats: #3D342E;     /* Ciemny brąz z futra - dla paska statystyk */
+
+    --color-text-header: #FFFFFF;  /* Czysta biel dla nagłówków, dla max kontrastu */
+    --color-text-body: #F1E3AD;   /* Jasny beż z pyszczka - dla głównego tekstu */
+    --color-text-muted: #D4C494;  /* Ciemniejszy beż - dla etykiet i opisów */
+
+    --color-accent-primary: #5BC0EB; /* Główny błękit ze słuchawek */
+    --color-accent-secondary: #1B8BBD;/* Ciemniejszy błękit dla przycisków/hoverów */
+    --color-accent-rust: #E76F51; /* MOCNY RUSTOWY POMARAŃCZ - jako pop! */
+    --color-accent-rust-dark: #D45B3E; /* Ciemniejszy odcień dla hoverów */
+    
+    --font-heading: 'Exo 2', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+
+    /* Nowe zmienne dla animacji */
+    --shadow-strong: 0 10px 30px rgba(0,0,0,0.6);
+    --shadow-hover: 0 15px 45px rgba(0,0,0,0.8);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-body);
+    font-family: var(--font-body);
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Zapobiega poziomemu scrollowaniu od animacji */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- NAGŁÓWEK --- */
+.main-header {
+    background: rgba(26, 26, 26, 0.85); /* Lekko ciemniejszy i mniej przezroczysty */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-bg-surface);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-strong); /* Dodaj cień do nagłówka */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.logo span {
+    color: var(--color-accent-primary);
+}
+
+.main-nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Grubiej, bardziej widocznie */
+    bottom: -8px; /* Niżej */
+    left: 50%;
+    background-color: var(--color-accent-rust); /* RUSTOWY AKCENT! */
+    transform: translateX(-50%);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Płynniejsza animacja */
+}
+
+.main-nav a:hover {
+    color: #fff;
+}
+.main-nav a:hover:after {
+    width: 100%;
+}
+
+.button-primary {
+    background-color: var(--color-accent-rust); /* RUSTOWY AKCENT! */
+    color: #fff;
+    padding: 12px 25px; /* Większy padding */
+    border-radius: 8px; /* Bardziej zaokrąglony */
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(231,111,81,0.4); /* Cieplejszy cień */
+}
+.button-primary:hover {
+    background-color: var(--color-accent-rust-dark); /* Ciemniejszy odcień na hover */
+    transform: translateY(-3px) scale(1.02); /* Lekkie podniesienie i powiększenie */
+    box-shadow: 0 8px 25px rgba(231,111,81,0.6);
+}
+.button-primary .icon {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+/* --- PRZEŁĄCZNIK JĘZYKÓW --- */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Odstęp między elementami */
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-surface);
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.lang-switcher button {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.lang-switcher button.active {
+    background-color: var(--color-accent-rust); /* RUSTOWY AKCENT! */
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(231,111,81,0.4);
+}
+
+.lang-switcher button:not(.active):hover {
+    color: var(--color-accent-rust); /* Podświetlenie nieaktywnego na pomarańczowo */
+}
+
+.lang-switcher span {
+    color: var(--color-bg-stats);
+    padding: 0 2px;
+}
+
+/* --- HERO SECTION --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--color-bg-main) 0%, #100f0f 100%); /* Lżejszy gradient */
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Stary gradient: radial-gradient(ellipse at bottom, #2c2521 0%, #1A1A1A 100%); */
+    /* Zamiast tego dodamy animowane tło! */
+    background: 
+        radial-gradient(circle at top left, var(--color-accent-rust) 0%, transparent 20%),
+        radial-gradient(circle at bottom right, var(--color-accent-rust) 0%, transparent 20%),
+        radial-gradient(circle at top right, var(--color-accent-primary) 0%, transparent 20%),
+        radial-gradient(circle at bottom left, var(--color-accent-primary) 0%, transparent 20%),
+        var(--color-bg-main);
+    background-size: 200% 200%; /* Dwa razy większe niż kontener */
+    animation: moveBackground 10s ease-in-out infinite; /* Animacja tła */
+    z-index: 1;
+    opacity: 0.25; /* Subtelny efekt */
+}
+
+@keyframes moveBackground {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+
+.hero-content {
+    z-index: 2;
+    max-width: 900px; /* Większa szerokość dla tekstu */
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 6.5rem; /* Większy rozmiar */
+    font-weight: 900;
+    color: var(--color-text-header);
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 0 25px rgba(91, 192, 235, 0.6), 0 0 50px rgba(91, 192, 235, 0.3); /* Intensywniejszy błękitny cień */
+    animation: textGlow 2s ease-in-out infinite alternate; /* Animowany cień */
+}
+@keyframes textGlow {
+    from { text-shadow: 0 0 15px rgba(91, 192, 235, 0.4), 0 0 30px rgba(91, 192, 235, 0.2); }
+    to { text-shadow: 0 0 25px rgba(91, 192, 235, 0.6), 0 0 50px rgba(91, 192, 235, 0.3); }
+}
+
+
+.hero-content h2 {
+    font-family: var(--font-heading);
+    font-size: 4.5rem; /* Większy rozmiar */
+    font-weight: 700;
+    color: var(--color-accent-primary);
+    margin: 0 0 25px 0;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.3rem; /* Większy tekst */
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--color-text-body); /* Jaśniejszy kolor dla lepszej czytelności */
+    opacity: 0.9;
+}
+
+/* --- STATYSTYKI --- */
+.stats-bar {
+    background-color: var(--color-bg-stats);
+    border-top: 1px solid var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-bg-surface);
+    padding: 30px 0; /* Większy padding */
+    box-shadow: var(--shadow-strong);
+}
+.stats-bar .container {
+    display: flex;
+    justify-content: space-around;
+    /* padding: 20px 0; usunięte, bo już w .stats-bar */
+}
+.stat {
+    text-align: center;
+    position: relative;
+    padding: 0 10px; /* Drobny padding, aby uniknąć przycinania cienia */
+}
+.stat .value {
+    display: block;
+    font-size: 2.2rem; /* Większy rozmiar */
+    font-weight: 700;
+    color: var(--color-text-header); /* Bardziej wyrazisty kolor */
+    text-shadow: 0 0 8px rgba(255,255,255,0.3); /* Subtelny cień */
+    line-height: 1.2;
+}
+.stat .label {
+    font-size: 0.95rem; /* Lekko większy */
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#admin-status.online {
+    color: #4CAF50; /* Zielony dla statusu "Dostępni" */
+    text-shadow: 0 0 8px rgba(76,175,80,0.5); /* Zielony cień */
+}
+#admin-status.offline {
+    color: #9E9E9E; /* Szary dla statusu "Offline" */
+    text-shadow: 0 0 8px rgba(158,158,158,0.3);
+}
+
+/* --- SEKCJE GŁÓWNE --- */
+.content-section {
+    padding: 100px 20px; /* Większy padding */
+    position: relative;
+    overflow: hidden; /* Dla tła cząsteczkowego */
+}
+
+/* Efekt cząsteczkowy dla sekcji */
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="1" fill="%234A403A" opacity="0.1"/></svg>');
+    background-size: 30px 30px;
+    animation: moveParticles 60s linear infinite;
+    opacity: 0.1; /* Bardzo subtelne */
+    z-index: 0;
+}
+@keyframes moveParticles {
+    0% { background-position: 0 0; }
+    100% { background-position: 300px 300px; } /* Przesuwanie tła */
+}
+
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 4rem; /* Większy rozmiar */
+    text-align: center;
+    margin-bottom: 30px; /* Mniejszy odstęp */
+    font-weight: 900;
+    color: var(--color-text-header);
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3); /* Biały cień */
+}
+.section-title span {
+    color: var(--color-accent-rust); /* RUSTOWY AKCENT! */
+    text-shadow: 0 0 10px rgba(231,111,81,0.5); /* Rustowy cień */
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem; /* Większy tekst */
+    color: var(--color-text-body); /* Jasny kolor */
+    max-width: 700px;
+    margin: -20px auto 60px auto; /* Większy odstęp na dole */
+    opacity: 0.9;
+}
+
+/* --- WYDARZENIA --- */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsywna siatka */
+    gap: 30px;
+}
+.event-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid #4a403a;
+    border-radius: 12px; /* Bardziej zaokrąglony */
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: var(--shadow-strong);
+    position: relative; /* Dla gradientu na hover */
+}
+.event-card::before { /* Animowany gradient na hover */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, var(--color-accent-rust-dark) 0%, var(--color-accent-primary) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+.event-card:hover::before {
+    opacity: 0.1;
+}
+
+.event-card:hover {
+    transform: translateY(-15px) scale(1.03); /* Większe podniesienie i powiększenie */
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-accent-rust); /* RUSTOWY AKCENT na border! */
+}
+.event-card img {
+    width: 100%;
+    height: 220px; /* Nieco wyższe obrazki */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0; /* Zaokrąglenie w górnych rogach obrazka */
+    filter: brightness(0.8) contrast(1.1); /* Lekko ciemniejszy i bardziej kontrastowy */
+    transition: filter 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+.event-card:hover img {
+    filter: brightness(1) contrast(1); /* Rozjaśnienie na hover */
+}
+.card-content {
+    padding: 25px; /* Większy padding */
+    position: relative;
+    z-index: 2; /* Upewnij się, że tekst jest nad gradientem */
+}
+.card-content h3 {
+    margin: 0 0 12px 0;
+    font-family: var(--font-heading);
+    color: var(--color-accent-rust); /* RUSTOWY AKCENT! */
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px rgba(231,111,81,0.3);
+}
+.card-content p {
+    color: var(--color-text-body); /* Jasny kolor */
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* --- GALERIA --- */
+#gallery {
+    background-color: #151210;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid var(--color-bg-surface);
+}
+.parallax-bg {
+    background-image: url('https://files.facepunch.com/paddy/20210324/rust_site2021_hero_v002.mp4');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.07; /* Lekko zwiększone opacity */
+    z-index: 0;
+    animation: parallaxScroll 120s linear infinite; /* Animacja paralaksy */
+}
+
+@keyframes parallaxScroll {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+#gallery .container {
+    position: relative;
+    z-index: 2;
+}
+.gallery-wrapper {
+    overflow-x: auto;
+    padding-bottom: 30px; /* Większy padding na dole */
+    -webkit-overflow-scrolling: touch; /* Lepsze przewijanie na iOS */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--color-accent-rust) var(--color-bg-surface); /* Firefox scrollbar */
+}
+/* Stylizacja scrollbara dla Webkit (Chrome, Safari) */
+.gallery-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+.gallery-wrapper::-webkit-scrollbar-track {
+    background: var(--color-bg-surface);
+    border-radius: 10px;
+}
+.gallery-wrapper::-webkit-scrollbar-thumb {
+    background: var(--color-accent-rust);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+.gallery-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-rust-dark);
+}
+
+.gallery-rail {
+    display: flex;
+    gap: 25px; /* Większy odstęp między zdjęciami */
+    width: max-content;
+    padding: 10px 0; /* Padding dla cieni */
+}
+.gallery-rail img {
+    height: 320px; /* Nieco wyższe obrazki */
+    border-radius: 10px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* Mocniejszy cień */
+    border: 2px solid transparent; /* Przezroczysta ramka do animacji */
+}
+.gallery-rail img:hover {
+    transform: scale(1.08) rotate(2deg); /* Większe powiększenie i obrót */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    border-color: var(--color-accent-rust); /* RUSTOWY AKCENT na border! */
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--color-bg-main);
+    border-top: 1px solid var(--color-bg-surface);
+    padding: 40px 0; /* Większy padding */
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.social-links a {
+    margin-left: 20px; /* Większy odstęp */
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+.social-links a:hover {
+    color: var(--color-accent-rust); /* RUSTOWY AKCENT! */
+    transform: translateY(-3px);
+}
+.social-links a:after { /* Podkreślenie na hover */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-accent-rust);
+    transition: width 0.3s ease;
+}
+.social-links a:hover:after {
+    width: 100%;
+}
+
+
+/* --- ANIMACJE --- */
+.animate-on-load {
+    animation: fadeInSlideUp 1s ease both;
+}
+.hero-content h1.animate-on-load { animation-delay: 0.2s; }
+.hero-content h2.animate-on-load { animation-delay: 0.4s; }
+.hero-content p.animate-on-load { animation-delay: 0.6s; }
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px); /* Większe przesunięcie */
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Płynniejsza animacja */
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Opóźnienie dla kart wydarzeń */
+.event-card:nth-child(1) { transition-delay: 0.1s; }
+.event-card:nth-child(2) { transition-delay: 0.2s; }
+.event-card:nth-child(3) { transition-delay: 0.3s; }
+/* Opóźnienie dla elementów statystyk */
+.stats-bar .stat:nth-child(1) { transition-delay: 0.1s; }
+.stats-bar .stat:nth-child(2) { transition-delay: 0.2s; }
+.stats-bar .stat:nth-child(3) { transition-delay: 0.3s; }
+.stats-bar .stat:nth-child(4) { transition-delay: 0.4s; }
+
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 4.5rem; }
+    .hero-content h2 { font-size: 3rem; }
+    .section-title { font-size: 3rem; }
+    .event-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .main-header .container { flex-direction: column; }
+    .main-nav { margin: 15px 0; }
+    .header-right { flex-direction: column-reverse; gap: 10px; width: 100%; }
+    .connect-button { width: 100%; justify-content: center; }
+    .lang-switcher { margin-right: 0; margin-bottom: 10px; }
+
+    .hero-content h1 { font-size: 3.5rem; }
+    .hero-content h2 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+
+    .stats-bar .container { flex-direction: column; gap: 25px; padding: 25px 0; }
+    .stat .value { font-size: 1.8rem; }
+    .stat .label { font-size: 0.9rem; }
+
+    .content-section { padding: 60px 20px; }
+    .section-title { font-size: 2.5rem; margin-bottom: 25px; }
+    .section-subtitle { margin-bottom: 30px; font-size: 1rem; }
+    .event-grid { grid-template-columns: 1fr; }
+    .event-card img { height: 180px; }
+    .card-content h3 { font-size: 1.4rem; }
+
+    .gallery-rail img { height: 250px; }
+    footer .container { flex-direction: column; gap: 15px; }
+    .social-links a { margin: 0 10px; }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 24px; }
+    .main-nav a { margin: 0 8px; font-size: 0.9rem; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content h2 { font-size: 1.8rem; }
+    .section-title { font-size: 2rem; }
+}

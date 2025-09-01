@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALT+F4 PvE</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">ALT+F4 <span>PvE</span></div>
+            <nav class="main-nav">
+                <a href="#rules" data-i18n-key="navRules"></a>
+                <a href="#events" data-i18n-key="navEvents"></a>
+                <a href="#gallery" data-i18n-key="navGallery"></a>
+                <a href="https://discord.com/invite/9YbSkjEHE2" target="_blank">Discord</a>
+            </nav>
+            <div class="header-right">
+                <div class="lang-switcher">
+                    <button id="lang-pl">PL</button>
+                    <span>|</span>
+                    <button id="lang-en">EN</button>
+                </div>
+                <a href="steam://connect/93.105.110.140:28015" class="button-primary connect-button">
+                    <span class="icon material-icons">play_arrow</span>
+                    <span data-i18n-key="connectButton"></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div id="hero-canvas"><video autoplay muted loop playsinline id="bg-video">
+    <source src="https://files.facepunch.com/paddy/20210324/rust_site2021_hero_v002.mp4" type="video/mp4">
+  </video></div>
+        <div class="hero-content">
+
+            <h1 class="animate-on-load" data-i18n-key="heroTitle"></h1>
+            <h2 class="animate-on-load" data-i18n-key="heroSubtitle"></h2>
+            <p class="animate-on-load" data-i18n-key="heroDescription"></p>
+        </div>
+    </section>
+
+    <main>
+        <section class="stats-bar">
+            <div class="container">
+                <div class="stat animate-on-scroll">
+                    <span class="value" id="players-online">Ładowanie...</span>
+                    <span class="label" data-i18n-key="statPlayers"></span>
+                </div>
+                <div class="stat animate-on-scroll">
+                    <span class="value">PvE</span>
+                    <span class="label" data-i18n-key="statGameMode"></span>
+                </div>
+                <div class="stat animate-on-scroll">
+                    <span class="value" id="next-wipe">Obliczanie...</span>
+                    <span class="label" id="wipe-type-label"></span>
+                </div>
+                <div class="stat animate-on-scroll">
+                    <span class="value" id="admin-status">Sprawdzanie...</span>
+                    <span class="label" data-i18n-key="statAdmins"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="container content-section">
+            <h2 class="section-title animate-on-scroll"><span data-i18n-key="eventsTitleSpan"></span> <span data-i18n-key="eventsTitle"></span></h2>
+            <div class="event-grid">
+                <div class="event-card animate-on-scroll">
+                    <img src="bases.avif" alt="Event: Obrona Bazy">
+                    <div class="card-content">
+                        <h3 data-i18n-key="event1Title"></h3>
+                        <p data-i18n-key="event1Desc"></p>
+                    </div>
+                </div>
+                <div class="event-card animate-on-scroll">
+                    <img src="drops.avif" alt="Event: Helikopter">
+                    <div class="card-content">
+                        <h3 data-i18n-key="event2Title"></h3>
+                        <p data-i18n-key="event2Desc"></p>
+                    </div>
+                </div>
+                <div class="event-card animate-on-scroll">
+                    <img src="building.avif" alt="Event: Budowlany">
+                    <div class="card-content">
+                        <h3 data-i18n-key="event3Title"></h3>
+                        <p data-i18n-key="event3Desc"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="content-section">
+            <div class="parallax-bg"><video autoplay muted loop playsinline id="bg-video">
+    <source src="https://files.facepunch.com/paddy/20210324/rust_site2021_hero_v002.mp4" type="video/mp4">
+  </video></div>
+            <div class="container">
+                <h2 class="section-title animate-on-scroll"><span data-i18n-key="galleryTitleSpan"></span> <span data-i18n-key="galleryTitle"></span></h2>
+                <p class="section-subtitle animate-on-scroll" data-i18n-key="galleryDesc"></p>
+                <div class="gallery-wrapper">
+                    <div class="gallery-rail">
+                        <img src="1.avif" alt="Baza gracza 1">
+                        <img src="2.avif" alt="Baza gracza 2">
+                        <img src="3.avif" alt="Baza gracza 3">
+                        <img src="https://i.imgur.com/9O3Y9Lh.jpeg" alt="Baza gracza 4">
+                        <img src="https://i.imgur.com/5uA1J8c.jpeg" alt="Baza gracza 5">
+                        <img src="https://i.imgur.com/yG1T6Q8.jpeg" alt="Baza gracza 6">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p data-i18n-key="footerText"></p>
+            <div class="social-links">
+                <a href="https://discord.com/invite/9YbSkjEHE2">Discord</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
