@@ -1,3 +1,32 @@
+// Wewnątrz obiektu translations.pl
+pl: {
+    // ... poprzednie tłumaczenia ...
+    // NOWE TŁUMACZENIA DLA MODALA
+    rulesModalTitle: "Zasady Serwera",
+    rulesModalFooter: "Nieznajomość zasad nie zwalnia z ich przestrzegania.",
+    rules: [
+        "Graczy nie da się zabić dzięki pluginom. Nie próbuj tego obchodzić- patrz punkt 4.",
+        "Twój loot, twoja sprawa. Trzymaj bazę zamkniętą i zabezpieczoną- gramy vanilla.",
+        "Bez griefingu. Nie blokuj baz, monumentów ani surowców.",
+        "Zero cheatów i exploitów. Złapiemy Cię = perm wipe.",
+        "Masz problem? Otwórz ticketa na Discordzie- admin odpisze."
+    ]
+},
+// Wewnątrz obiektu translations.en
+en: {
+    // ... poprzednie tłumaczenia ...
+    // NOWE TŁUMACZENIA DLA MODALA
+    rulesModalTitle: "Server Rules",
+    rulesModalFooter: "Not knowing the rules does not exempt you from them.",
+    rules: [
+        "Players are unkillable by plugins. Don’t try to bypass it- see rule 4.",
+        "Your loot, your problem. Keep your base locked and secured- vanilla style.",
+        "No griefing. Don’t block bases, monuments, or resources.",
+        "No cheating, no exploits. Caught once = perm wipe.",
+        "Got a problem? Open a ticket on Discord- an admin will respond."
+    ]
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // === SEKCJA TŁUMACZEŃ (I18N) ===
@@ -243,4 +272,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialLang = getInitialLanguage();
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
+
 });
