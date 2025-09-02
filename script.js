@@ -37,17 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
             galleryTitle: "Społeczności",
             galleryDesc: "Podziwiaj niesamowite konstrukcje stworzone przez naszych graczy.",
             // Stopka
+            
             footerText: "© 2025 ALT+F4 PvE. Serwer stworzony przez graczy, dla graczy.",
             // Modal zasad
-            rulesModalTitle: "Zasady Serwera",
-            rulesModalFooter: "Nieznajomość zasad nie zwalnia z ich przestrzegania.",
-            rules: [
-                "Graczy nie da się zabić dzięki pluginom. Nie próbuj tego obchodzić- patrz punkt 4.",
-                "Twój loot, twoja sprawa. Trzymaj bazę zamkniętą i zabezpieczoną- gramy vanilla.",
-                "Bez griefingu. Nie blokuj baz, monumentów ani surowców.",
-                "Zero cheatów i exploitów. Złapiemy Cię = perm wipe.",
-                "Masz problem? Otwórz ticketa na Discordzie- admin odpisze."
-            ]
+                     rulesModalTitle: "Prawa Dżungli (Czytaj i Płacz)",
+                    rulesModalFooter: "Łamanie zasad to nie exploit, to styl życia. Po prostu nie daj się złapać, cwelu.",
+                rules: [
+                    "Jesteś nieśmiertelny? Cudownie. Twoja baza już nie jest. Nie próbuj być mądrzejszy ode mnie.",
+                    "Twój loot to nasz loot. Zamknij bazę lepiej niż swoją dupę, bo ją okradniemy. Vanilla, co nie?",
+                    "Griefing to nasz narodowy sport. Zablokujesz monument? Zabetonujemy ci spawn. Zagrajmy.",
+                    "Cheaty? Eksploity? To nie cheat, to 'nieudokumentowana funkcja'. Złapiemy cię = dostaniesz medal za kreatywność (i perma).",
+                    "Masz problem? Płaczesz? Otwórz ticketa, a nasz admin (jeśli w ogóle istnieje) może cię wyśmieje za tydzień."
+                        ]
         },
         en: {
             // Meta
@@ -305,3 +306,4 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
