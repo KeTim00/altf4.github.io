@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             footerText: "© 2025 ALT+F4 PvE. Serwer stworzony przez graczy, dla graczy.",
             // Modal zasad
-                     rulesModalTitle: "Prawa Dżungli (Czytaj i Płacz)",
+                     rulesModalTitle: "Prawa Dżungli",
                     rulesModalFooter: "Łamanie zasad to nie exploit, to styl życia. Po prostu nie daj się złapać, cwelu.",
                 rules: [
                     "Jesteś nieśmiertelny? Cudownie. Twoja baza już nie jest. Nie próbuj być mądrzejszy ode mnie.",
@@ -87,14 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Footer
             footerText: "© 2025 ALT+F4 PvE. A server made by players, for players.",
             // Rules Modal
-            rulesModalTitle: "Server Rules",
-            rulesModalFooter: "Not knowing the rules does not exempt you from them.",
+            rulesModalTitle: "Law of the Land (Read It And Weep)",
+            rulesModalFooter: "Breaking rules isn't an exploit, it's a lifestyle. Just don't get caught, you mug.",
             rules: [
-                "Players are unkillable by plugins. Don’t try to bypass it- see rule 4.",
-                "Your loot, your problem. Keep your base locked and secured- vanilla style.",
-                "No griefing. Don’t block bases, monuments, or resources.",
-                "No cheating, no exploits. Caught once = perm wipe.",
-                "Got a problem? Open a ticket on Discord- an admin will respond."
+                "You're unkillable? Wonderful. Your base isn't. Don't try to be smarter than me.",
+                "Your loot is our loot. Lock your base tighter than your asshole, or we'll rob you blind. Vanilla, innit?",
+                "Griefing is our national sport. Block a monument? We'll concrete your spawn. Let's play.",
+                "Cheats? Exploits? It's not a cheat, it's an 'undocumented feature'. Get caught = get a medal for creativity (and a perma).",
+                "Got a problem? Crying? Open a ticket and our admin (if he even exists) might laugh at you in a week."
             ]
         }
     };
@@ -306,4 +306,5 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
