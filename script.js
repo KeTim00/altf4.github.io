@@ -343,10 +343,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!aboutModal.classList.contains('hidden')) closeAboutModal();
         }
     });
-
     // Inicjalizacja strony
     const initialLang = getInitialLanguage();
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
-
