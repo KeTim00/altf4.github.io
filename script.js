@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Meta
             pageTitle: "ALT+F4 PvE — Buduj. Odkrywaj. Triumfujcie Razem.",
             // Nawigacja
+            navAbout: "O Serwerze",
             navRules: "Zasady",
             navEvents: "Wydarzenia",
             navGallery: "Galeria",
@@ -17,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Pasek statystyk
             statPlayers: "Graczy Online",
             statGameMode: "Tryb Gry",
-            wipeLabel: "Do Następnego Wipe",
             wipeLabelServer: "Do następnego: Wipe Serwera",
             wipeLabelForce: "Do następnego: Force Wipe",
             wipeInProgress: "WIPE W TOKU!",
@@ -37,23 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
             galleryTitle: "Społeczności",
             galleryDesc: "Podziwiaj niesamowite konstrukcje stworzone przez naszych graczy.",
             // Stopka
-            
             footerText: "© 2025 ALT+F4 PvE. Serwer stworzony przez graczy, dla graczy.",
             // Modal zasad
-                     rulesModalTitle: "Prawa Dżungli",
-                    rulesModalFooter: "Łamanie zasad to nie exploit, to styl życia. Po prostu nie daj się złapać, cwelu.",
-                rules: [
-                    "Jesteś nieśmiertelny? Cudownie. Twoja baza już nie jest. Nie próbuj być mądrzejszy ode mnie.",
-                    "Twój loot to nasz loot. Zamknij bazę lepiej niż swoją dupę, bo ją okradniemy. Vanilla, co nie?",
-                    "Griefing to nasz narodowy sport. Zablokujesz monument? Zabetonujemy ci spawn. Zagrajmy.",
-                    "Cheaty? Eksploity? To nie cheat, to 'nieudokumentowana funkcja'. Złapiemy cię = dostaniesz medal za kreatywność (i perma).",
-                    "Masz problem? Płaczesz? Otwórz ticketa, a nasz admin (jeśli w ogóle istnieje) może cię wyśmieje za tydzień."
-                        ]
+            rulesModalTitle: "Zasady Serwera",
+            rulesModalFooter: "Nieznajomość zasad nie zwalnia z ich przestrzegania.",
+            rules: [
+                "Graczy nie da się zabić dzięki pluginom. Nie próbuj tego obchodzić- patrz punkt 4.",
+                "Twój loot, twoja sprawa. Trzymaj bazę zamkniętą i zabezpieczoną- gramy vanilla.",
+                "Bez griefingu. Nie blokuj baz, monumentów ani surowców.",
+                "Zero cheatów i exploitów. Złapiemy Cię = perm wipe.",
+                "Masz problem? Otwórz ticketa na Discordzie- admin odpisze."
+            ],
+            // NOWE TŁUMACZENIA - Modal "O serwerze"
+            aboutModalTitle: "Co Nas Wyróżnia?",
+            aboutContent: `
+                <h3>🌳 Zaawansowany System Umiejętności (SkillTree)</h3>
+                <p>Rozwijaj swoją postać w różnych dziedzinach, takich jak zbieractwo, walka i rzemiosło, aby stawać się silniejszym i odblokowywać nowe zdolności.</p>
+                <h3>💥 Ekscytujące Eventy PvE</h3>
+                <p>Dynamiczne wydarzenia pojawiają się na całej mapie, w tym Pociąg Pancerny, Konwój, Deszcze Meteorytów, Wraki Statków, a nawet Kosmiczne Zrzuty. Walcz z NPC i zdobywaj cenny loot!</p>
+                <h3>🎯 Wyzwania dla Graczy</h3>
+                <p><b>Raidowalne Bazy</b> – Atakuj bazy kontrolowane przez NPC o różnych poziomach trudności.<br><b>Rajdy NPC</b> – Uważaj! NPC mogą raidować bazy graczy, więc zawsze chroń swój dom.<br><b>Inteligentniejsze Boty</b> – Ulepszone NPC, które są twardsze i bardziej wymagające.</p>
+                <h3>🎁 Nagrody i Udogodnienia (QoL)</h3>
+                <p><b>Nagrody za Czas Gry</b> – Zdobywaj punkty podczas gry i wydawaj je w sklepie.<br><b>Zestawy Startowe</b> – Odbierz darmowe zestawy, aby szybko rozpocząć swoją przygodę.<br><b>Większe Stacki i Automatyzacja</b> – Ciesz się zwiększonymi stackami i automatycznym sortowaniem w piecach.</p>
+                <h3>🎨 Wszystkie Skórki Odblokowane</h3>
+                <p>Użyj komendy /skin, aby nałożyć dowolną skórkę na swoje przedmioty.</p>
+                <h3>🔨 Narzędzie do Usuwania</h3>
+                <p>Łatwo zarządzaj i przebudowuj swoją bazę.</p>
+                <h3>✨ Unikalne Funkcje</h3>
+                <p><b>Bazy Wodne</b> – Buduj swoją fortecę na otwartym morzu.<br><b>Uprawa Ganja</b> – Zostań rolnikiem i uprawiaj specjalne rośliny. 😉<br><b>Latający Dywan</b> – Zdobądź własny magiczny dywan i szybuj po niebie.<br><b>Własne Stacje Radiowe</b> – Odtwarzaj muzykę w swojej bazie lub pojeździe.</p>
+            `
         },
         en: {
             // Meta
             pageTitle: "ALT+F4 PvE — Build. Explore. Triumph Together.",
             // Navigation
+            navAbout: "About",
             navRules: "Rules",
             navEvents: "Events",
             navGallery: "Gallery",
@@ -65,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Stats Bar
             statPlayers: "Players Online",
             statGameMode: "Game Mode",
-            wipeLabel: "Until Next Wipe",
             wipeLabelServer: "Next: Server Wipe",
             wipeLabelForce: "Next: Force Wipe",
             wipeInProgress: "WIPE IN PROGRESS!",
@@ -87,15 +104,33 @@ document.addEventListener('DOMContentLoaded', () => {
             // Footer
             footerText: "© 2025 ALT+F4 PvE. A server made by players, for players.",
             // Rules Modal
-            rulesModalTitle: "Law of the Land",
-            rulesModalFooter: "Breaking rules isn't an exploit, it's a lifestyle. Just don't get caught, you mug.",
+            rulesModalTitle: "Server Rules",
+            rulesModalFooter: "Not knowing the rules does not exempt you from them.",
             rules: [
-                "You're unkillable? Wonderful. Your base isn't. Don't try to be smarter than me.",
-                "Your loot is our loot. Lock your base tighter than your asshole, or we'll rob you blind. Vanilla, innit?",
-                "Griefing is our national sport. Block a monument? We'll concrete your spawn. Let's play.",
-                "Cheats? Exploits? It's not a cheat, it's an 'undocumented feature'. Get caught = get a medal for creativity (and a perma).",
-                "Got a problem? Crying? Open a ticket and our admin (if he even exists) might laugh at you in a week."
-            ]
+                "Players are unkillable by plugins. Don’t try to bypass it- see rule 4.",
+                "Your loot, your problem. Keep your base locked and secured- vanilla style.",
+                "No griefing. Don’t block bases, monuments, or resources.",
+                "No cheating, no exploits. Caught once = perm wipe.",
+                "Got a problem? Open a ticket on Discord- an admin will respond."
+            ],
+            // NEW TRANSLATIONS - "About" Modal
+            aboutModalTitle: "What Makes Us Special?",
+            aboutContent: `
+                <h3>🌳 Advanced Skill System (SkillTree)</h3>
+                <p>Level up your character in different areas such as gathering, combat, and crafting to grow stronger and unlock new abilities.</p>
+                <h3>💥 Exciting PvE Events</h3>
+                <p>Dynamic events spawn across the map, including the Armored Train, Convoy, Meteor Showers, Shipwrecks, and even Cosmic Drops. Fight NPCs and claim valuable loot!</p>
+                <h3>🎯 Player Challenges</h3>
+                <p><b>Raidable Bases</b> – Attack NPC-controlled bases with varying difficulty levels.<br><b>NPC Raids</b> – Beware! NPCs can raid player bases, so always protect your home.<br><b>Smarter Bots</b> – Upgraded NPCs that are tougher and more challenging.</p>
+                <h3>🎁 Rewards & Quality of Life (QoL)</h3>
+                <p><b>Playtime Rewards</b> – Earn points while playing and spend them in the shop.<br><b>Starter Kits</b> – Grab free kits to kickstart your adventure.<br><b>Bigger Stacks & Automation</b> – Enjoy increased stack sizes and automatic furnace splitting.</p>
+                <h3>🎨 All Skins Unlocked</h3>
+                <p>Use /skin to apply any skin to your items.</p>
+                <h3>🔨 Remover Tool</h3>
+                <p>Easily manage and redesign your base.</p>
+                <h3>✨ Unique Features</h3>
+                <p><b>Water Bases</b> – Build your fortress on the open sea.<br><b>Ganja Farming</b> – Become a farmer and grow special plants. 😉<br><b>Flying Carpet</b> – Get your own magic carpet and soar through the skies.<br><b>Custom Radio Stations</b> – Play music inside your base or vehicle.</p>
+            `
         }
     };
 
@@ -123,9 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getInitialLanguage = () => {
         const savedLang = localStorage.getItem('language');
-        if (savedLang) {
-            return savedLang;
-        }
+        if (savedLang) return savedLang;
         const browserLang = navigator.language || navigator.userLanguage;
         return browserLang.startsWith('pl') ? 'pl' : 'en';
     };
@@ -145,9 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === SEKCJA ANIMACJI ===
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
@@ -159,16 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const apiUrl = `https://api.battlemetrics.com/servers/${serverId}?include=player`;
         try {
             const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error(`Błąd sieci: ${response.status}`);
+            if (!response.ok) throw new Error(`Network response was not ok: ${response.status}`);
             const data = await response.json();
-            if (data && data.data && data.data.attributes) {
-                const players = data.data.attributes.players;
-                const maxPlayers = data.data.attributes.maxPlayers;
-                const playersOnlineEl = document.getElementById('players-online');
-                if (playersOnlineEl) playersOnlineEl.textContent = `${players}/${maxPlayers}`;
+
+            const playersOnlineEl = document.getElementById('players-online');
+            if (data?.data?.attributes) {
+                playersOnlineEl.textContent = `${data.data.attributes.players}/${data.data.attributes.maxPlayers}`;
             } else {
-                throw new Error("Otrzymano nieprawidłowy format danych z API.");
+                throw new Error("Invalid API data structure for player count.");
             }
+
             const adminStatusEl = document.getElementById('admin-status');
             let isAdminOnline = false;
             if (data.included && data.included.length > 0) {
@@ -176,15 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 isAdminOnline = adminSteamIDs.some(adminId => onlinePlayerSteamIDs.includes(adminId));
             }
             if (adminStatusEl) {
-                const currentLang = document.documentElement.lang || 'pl';
+                const currentLang = document.documentElement.lang;
                 adminStatusEl.textContent = isAdminOnline ? (currentLang === 'pl' ? "Dostępni" : "Available") : "Offline";
                 adminStatusEl.classList.toggle('online', isAdminOnline);
                 adminStatusEl.classList.toggle('offline', !isAdminOnline);
             }
         } catch (error) {
-            console.error("Błąd podczas pobierania danych z BattleMetrics:", error);
+            console.error("Error fetching from BattleMetrics:", error);
             document.getElementById('players-online').textContent = "Offline";
-            document.getElementById('admin-status').textContent = "Błąd";
+            document.getElementById('admin-status').textContent = "Error";
         }
     }
     updateServerStats();
@@ -232,11 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getNextForceWipe = (now) => {
             const wipeTimeUTC = { hour: 18, minute: 0, second: 0 };
-            let year = now.getUTCFullYear();
-            let month = now.getUTCMonth();
+            let year = now.getUTCFullYear(), month = now.getUTCMonth();
             const findFirstThursday = (y, m) => {
                 const date = new Date(Date.UTC(y, m, 1, wipeTimeUTC.hour, wipeTimeUTC.minute, wipeTimeUTC.second));
-                while (date.getUTCDay() !== 4) { date.setUTCDate(date.getUTCDate() + 1); }
+                while (date.getUTCDay() !== 4) date.setUTCDate(date.getUTCDate() + 1);
                 return date;
             };
             let forceWipeDate = findFirstThursday(year, month);
@@ -249,9 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const getNextBiWeeklyWipe = (now) => {
             const anchorDate = getNextForceWipe(new Date('2025-01-01T00:00:00Z'));
-            while (anchorDate < now) {
-                anchorDate.setUTCDate(anchorDate.getUTCDate() + 14);
-            }
+            while (anchorDate < now) anchorDate.setUTCDate(anchorDate.getUTCDate() + 14);
             return anchorDate;
         };
 
@@ -259,16 +287,16 @@ document.addEventListener('DOMContentLoaded', () => {
         countdownInterval = setInterval(updateCountdown, 1000);
     }
     
-    // === LOGIKA OKNA MODALNEGO ZASAD ===
+    // === LOGIKA OKIEN MODALNYCH ===
+    // 1. Modal Zasad
     const rulesModal = document.getElementById('rules-modal');
     const openRulesBtn = document.querySelector('a[href="#rules"]');
-    const closeRulesBtn = document.getElementById('close-modal-btn');
+    const closeRulesBtn = document.getElementById('close-rules-modal-btn');
     const rulesList = document.getElementById('rules-list');
 
-    const openModal = () => {
-        const currentLang = document.documentElement.lang || 'pl';
+    const openRulesModal = () => {
+        const currentLang = document.documentElement.lang;
         const rules = translations[currentLang].rules;
-        
         rulesList.innerHTML = '';
         rules.forEach(ruleText => {
             const li = document.createElement('li');
@@ -277,27 +305,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         rulesModal.classList.remove('hidden');
     };
-
-    const closeModal = () => {
-        rulesModal.classList.add('hidden');
-    };
+    const closeRulesModal = () => rulesModal.classList.add('hidden');
 
     openRulesBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        openModal();
+        openRulesModal();
     });
+    closeRulesBtn.addEventListener('click', closeRulesModal);
 
-    closeRulesBtn.addEventListener('click', closeModal);
+    // 2. Modal "O Serwerze"
+    const aboutModal = document.getElementById('about-modal');
+    const openAboutBtn = document.querySelector('a[href="#about"]');
+    const closeAboutBtn = document.getElementById('close-about-modal-btn');
+    const aboutContent = document.getElementById('about-content');
+    
+    const openAboutModal = () => {
+        const currentLang = document.documentElement.lang;
+        aboutContent.innerHTML = translations[currentLang].aboutContent;
+        aboutModal.classList.remove('hidden');
+    };
+    const closeAboutModal = () => aboutModal.classList.add('hidden');
 
-    rulesModal.addEventListener('click', (e) => {
-        if (e.target === rulesModal) {
-            closeModal();
-        }
+    openAboutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAboutModal();
     });
+    closeAboutBtn.addEventListener('click', closeAboutModal);
 
+    // Zamykanie obu modali po kliknięciu na tło lub klawiszem Escape
+    document.addEventListener('click', (e) => {
+        if (e.target === rulesModal) closeRulesModal();
+        if (e.target === aboutModal) closeAboutModal();
+    });
     document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape" && !rulesModal.classList.contains('hidden')) {
-            closeModal();
+        if (e.key === "Escape") {
+            if (!rulesModal.classList.contains('hidden')) closeRulesModal();
+            if (!aboutModal.classList.contains('hidden')) closeAboutModal();
         }
     });
 
@@ -306,6 +349,3 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
-
-
-
