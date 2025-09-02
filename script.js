@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Zero cheatów i exploitów. Złapiemy Cię = perm wipe.",
                 "Masz problem? Otwórz ticketa na Discordzie- admin odpisze."
             ],
-            // NOWE TŁUMACZENIA - Modal "O serwerze"
+            // Tłumaczenia - Modal "O serwerze"
             aboutModalTitle: "Co Nas Wyróżnia?",
             aboutContent: `
                 <h3>🌳 Zaawansowany System Umiejętności (SkillTree)</h3>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "No cheating, no exploits. Caught once = perm wipe.",
                 "Got a problem? Open a ticket on Discord- an admin will respond."
             ],
-            // NEW TRANSLATIONS - "About" Modal
+            // Tłumaczenia - Modal "O serwerze"
             aboutModalTitle: "What Makes Us Special?",
             aboutContent: `
                 <h3>🌳 Advanced Skill System (SkillTree)</h3>
@@ -349,3 +349,4 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
