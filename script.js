@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Footer
             footerText: "© 2025 ALT+F4 PvE. A server made by players, for players.",
             // Rules Modal
-            rulesModalTitle: "Law of the Land (Read It And Weep)",
+            rulesModalTitle: "Law of the Land",
             rulesModalFooter: "Breaking rules isn't an exploit, it's a lifestyle. Just don't get caught, you mug.",
             rules: [
                 "You're unkillable? Wonderful. Your base isn't. Don't try to be smarter than me.",
@@ -306,5 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
