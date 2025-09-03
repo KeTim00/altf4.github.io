@@ -557,10 +557,32 @@ footer .container {
     transform: scale(1);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-top: 5px solid var(--color-accent-rust);
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.hidden .modal-content {
     transform: scale(0.7);
+}
+.modal-body {
+    margin-top: 15px;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 10px;
+}
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-body::-webkit-scrollbar-track {
+    background: var(--color-bg-surface);
+    border-radius: 6px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--color-accent-rust);
+    border-radius: 6px;
+}
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-rust-dark);
 }
 
 .modal-close-btn {
@@ -694,4 +716,5 @@ footer .container {
     padding-left: 13px;
     line-height: 1.6;
 }
+
 
