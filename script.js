@@ -116,20 +116,53 @@ document.addEventListener('DOMContentLoaded', () => {
             // Tłumaczenia - Modal "O serwerze"
             aboutModalTitle: "What Makes Us Special?",
             aboutContent: `
-                <h3>🌳 Advanced Skill System (SkillTree)</h3>
-                <p>Level up your character in different areas such as gathering, combat, and crafting to grow stronger and unlock new abilities.</p>
-                <h3>💥 Exciting PvE Events</h3>
-                <p>Dynamic events spawn across the map, including the Armored Train, Convoy, Meteor Showers, Shipwrecks, and even Cosmic Drops. Fight NPCs and claim valuable loot!</p>
-                <h3>🎯 Player Challenges</h3>
-                <p><b>Raidable Bases</b> – Attack NPC-controlled bases with varying difficulty levels.<br><b>NPC Raids</b> – Beware! NPCs can raid player bases, so always protect your home.<br><b>Smarter Bots</b> – Upgraded NPCs that are tougher and more challenging.</p>
-                <h3>🎁 Rewards & Quality of Life (QoL)</h3>
-                <p><b>Playtime Rewards</b> – Earn points while playing and spend them in the shop.<br><b>Starter Kits</b> – Grab free kits to kickstart your adventure.<br><b>Bigger Stacks & Automation</b> – Enjoy increased stack sizes and automatic furnace splitting.</p>
-                <h3>🎨 All Skins Unlocked</h3>
-                <p>Use /skin to apply any skin to your items.</p>
-                <h3>🔨 Remover Tool</h3>
-                <p>Easily manage and redesign your base.</p>
-                <h3>✨ Unique Features</h3>
-                <p><b>Water Bases</b> – Build your fortress on the open sea.<br><b>Ganja Farming</b> – Become a farmer and grow special plants. 😉<br><b>Flying Carpet</b> – Get your own magic carpet and soar through the skies.<br><b>Custom Radio Stations</b> – Play music inside your base or vehicle.</p>
+                    <h2>⚔️ Welcome to our RUST server! ⚔️</h2>
+    <p>Our server was created by players for players, with the goal of letting everyone enjoy Rust gameplay with added features and enhancements that don’t compromise the original Rust experience. 🧡</p>
+
+    <h3>⏰ Bi-weekly wipe</h3>
+    <p>We reset everything except blueprints and RP points. Blueprints are reset monthly, and RP points expire after 6 months, keeping the system dynamic and fair. ✨</p>
+
+    <h3>💰 How RP works</h3>
+    <p>Earn RP not only by playing on the server but also by selling items and trading with other players. Develop your character as you wish through the SkillTree, choosing specializations in combat, crafting, or gathering. 🏹⛏️🌱</p>
+
+    <h3>⭐ What makes us special</h3>
+    <ul>
+        <li><b>Advanced Skill System (SkillTree)</b> – Level up your character in multiple areas and grow stronger. The SkillTree allows you to tailor your character’s development to your playstyle. 💪</li>
+        <li><b>Exciting PvE Events</b> – Dynamic events regularly spawn across the map, including: Armored Train 🚂, Convoy 🚚, Meteor Showers ☄️, Shipwrecks ⚓, Cosmic Drops 🌌. Fight NPCs and claim valuable loot! 💥</li>
+        <li><b>Player Challenges</b> – Raidable Bases 🛡️, NPC Raids 🚨, Smarter Bots 🧠</li>
+    </ul>
+
+    <h3>🎁 Rewards & Quality of Life (QoL)</h3>
+    <ul>
+        <li>Playtime Rewards 🛍️</li>
+        <li>Starter Kits 📦</li>
+        <li>Bigger Stacks & Automation 🔥</li>
+        <li>All Skins Unlocked ✨</li>
+        <li>Remover Tool 🔨</li>
+    </ul>
+
+    <h3>🔮 Unique Features</h3>
+    <ul>
+        <li>Water Bases 🌊</li>
+        <li>Ganja Farming 🌿</li>
+        <li>Flying Carpet 🧞‍♂️</li>
+        <li>Custom Radio Stations 📻</li>
+    </ul>
+
+    <h3>🚀 VIP Plans</h3>
+    <p>In the future, we plan to introduce a VIP option for players who want to financially support the server and enjoy additional benefits. All donations will go towards server development and new plugins. Priority will be given to plugins that receive the most reactions in the ⁠suggestions-sugestie channel. ❤️</p>
+
+    <h3>💡 Why play with us?</h3>
+    <ul>
+        <li>Stable and optimized server 💻⚙️</li>
+        <li>Regular updates and new events 🔄🆕</li>
+        <li>A community focused on PvE and fun together 🎉🤝</li>
+    </ul>
+
+    <h3>🔗 Connect your Discord with the Rust server</h3>
+    <p>Stay connected with in-game chat synced to Discord 💬👾<br>
+       Receive a special starter gift when you link your account! 🎁
+    </p>
             `
         }
     };
@@ -349,4 +382,5 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
