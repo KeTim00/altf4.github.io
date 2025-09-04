@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navRules: "Zasady",
             navEvents: "Wydarzenia",
             navGallery: "Galeria",
+            navStore: "Sklep",
             connectButton: "Połącz z Serwerem",
             // Hero
             heroTitle: "Buduj. Odkrywaj.",
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navRules: "Rules",
             navEvents: "Events",
             navGallery: "Gallery",
+            navStore: "Store",
             connectButton: "Connect to Server",
             // Hero
             heroTitle: "Build. Explore.",
@@ -382,5 +384,6 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
