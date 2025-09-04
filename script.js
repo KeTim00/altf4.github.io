@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <li>Water Bases 🌊</li>
         <li>Ganja Farming 🌿</li>
         <li>Flying Carpet 🧞‍♂️</li>
-        <li>Custom Radio Stations 📻</li>
+        <li>Custom Radio Stations 📻 (PAID OPTION)</li>
     </ul>
 
     <h3>🚀 VIP Plans</h3>
@@ -384,6 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
 
