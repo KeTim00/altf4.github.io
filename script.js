@@ -257,70 +257,84 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateServerStats, 60000);
 
     // === ZAAWANSOWANA SEKCJA LICZNIKA WIPE ===
-    let countdownInterval;
-    function initializeWipeCountdown(lang) {
-        if (countdownInterval) clearInterval(countdownInterval);
+    // === ZAAWANSOWANA SEKCJA LICZNIKA WIPE ===
+let countdownInterval;
+function initializeWipeCountdown(lang) {
+    if (countdownInterval) clearInterval(countdownInterval);
 
-        const wipeElement = document.getElementById('next-wipe');
-        const wipeTypeElement = document.getElementById('wipe-type-label');
+    const wipeElement = document.getElementById('next-wipe');
+    const wipeTypeElement = document.getElementById('wipe-type-label');
 
-        const updateCountdown = () => {
-            const now = new Date();
-            const nextForceWipe = getNextForceWipe(now);
-            const nextBiWeeklyWipe = getNextBiWeeklyWipe(now);
-            let finalWipeDate, wipeTypeKey;
+    const updateCountdown = () => {
+        const now = new Date();
+        const nextForceWipe = getNextForceWipe(now);
+        const nextBiWeeklyWipe = getNextBiWeeklyWipe(now);
 
-            if (nextForceWipe < nextBiWeeklyWipe) {
-                finalWipeDate = nextForceWipe;
-                wipeTypeKey = 'wipeLabelForce';
-            } else {
-                finalWipeDate = nextBiWeeklyWipe;
-                wipeTypeKey = 'wipeLabelServer';
+        let finalWipeDate, wipeTypeKey;
+
+        if (nextForceWipe < nextBiWeeklyWipe) {
+            finalWipeDate = nextForceWipe;
+            wipeTypeKey = 'wipeLabelForce';
+        } else {
+            finalWipeDate = nextBiWeeklyWipe;
+            wipeTypeKey = 'wipeLabelServer';
+        }
+
+        const diff = finalWipeDate - now;
+
+        if (diff <= 0) {
+            wipeElement.textContent = translations[lang].wipeInProgress;
+            wipeTypeElement.textContent = translations[lang].wipeRefresh;
+            clearInterval(countdownInterval);
+            return;
+        }
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        wipeElement.textContent = `${d} ${lang === 'pl' ? 'dni' : 'days'} ${h}h ${m}m ${s}s`;
+        wipeTypeElement.textContent = translations[lang][wipeTypeKey];
+    };
+
+    // === Force Wipe: pierwszy czwartek miesiąca, 20:00 lokalnego czasu ===
+    const getNextForceWipe = (now) => {
+        let year = now.getFullYear();
+        let month = now.getMonth();
+
+        const findFirstThursday = (y, m) => {
+            let date = new Date(y, m, 1, 20, 0, 0); // 20:00 lokalnie
+            while (date.getDay() !== 4) { // 4 = czwartek
+                date.setDate(date.getDate() + 1);
             }
-            
-            const diff = finalWipeDate - now;
-
-            if (diff <= 0) {
-                wipeElement.textContent = translations[lang].wipeInProgress;
-                wipeTypeElement.textContent = translations[lang].wipeRefresh;
-                clearInterval(countdownInterval);
-                return;
-            }
-
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-            wipeElement.textContent = `${d} ${lang === 'pl' ? 'dni' : 'days'} ${h}h ${m}m ${s}s`;
-            wipeTypeElement.textContent = translations[lang][wipeTypeKey];
+            return date;
         };
 
-        const getNextForceWipe = (now) => {
-            const wipeTimeUTC = { hour: 18, minute: 0, second: 0 };
-            let year = now.getUTCFullYear(), month = now.getUTCMonth();
-            const findFirstThursday = (y, m) => {
-                const date = new Date(Date.UTC(y, m, 1, wipeTimeUTC.hour, wipeTimeUTC.minute, wipeTimeUTC.second));
-                while (date.getUTCDay() !== 4) date.setUTCDate(date.getUTCDate() + 1);
-                return date;
-            };
-            let forceWipeDate = findFirstThursday(year, month);
-            if (forceWipeDate < now) {
-                month++;
-                if (month > 11) { month = 0; year++; }
-                forceWipeDate = findFirstThursday(year, month);
-            }
-            return forceWipeDate;
-        };
-        const getNextBiWeeklyWipe = (now) => {
-            const anchorDate = getNextForceWipe(new Date('2025-01-01T00:00:00Z'));
-            while (anchorDate < now) anchorDate.setUTCDate(anchorDate.getUTCDate() + 14);
-            return anchorDate;
-        };
+        let forceWipeDate = findFirstThursday(year, month);
+        if (forceWipeDate <= now) {
+            month++;
+            if (month > 11) { month = 0; year++; }
+            forceWipeDate = findFirstThursday(year, month);
+        }
+        return forceWipeDate;
+    };
 
-        updateCountdown();
-        countdownInterval = setInterval(updateCountdown, 1000);
-    }
+    // === Map Wipe: co 14 dni od 4.09.2025, 20:00 lokalnie ===
+    const getNextBiWeeklyWipe = (now) => {
+        const startDate = new Date(2025, 8, 4, 20, 0, 0); // 4 września 2025, 20:00
+        let nextWipe = new Date(startDate);
+
+        while (nextWipe <= now) {
+            nextWipe.setDate(nextWipe.getDate() + 14);
+        }
+        return nextWipe;
+    };
+
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+}
+
     
     // === LOGIKA OKIEN MODALNYCH ===
     // 1. Modal Zasad
@@ -384,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
 
