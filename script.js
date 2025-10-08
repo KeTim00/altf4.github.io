@@ -330,7 +330,6 @@ function initializeWipeCountdown(lang = 'pl') {
     countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-
     
     // === LOGIKA OKIEN MODALNYCH ===
     // 1. Modal Zasad
@@ -394,6 +393,7 @@ function initializeWipeCountdown(lang = 'pl') {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
 
