@@ -259,32 +259,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // === ZAAWANSOWANA SEKCJA LICZNIKA WIPE ===
     // === ZAAWANSOWANA SEKCJA LICZNIKA WIPE ===
 let countdownInterval;
-function initializeWipeCountdown(lang) {
+
+function initializeWipeCountdown(lang = 'pl') {
     if (countdownInterval) clearInterval(countdownInterval);
 
     const wipeElement = document.getElementById('next-wipe');
     const wipeTypeElement = document.getElementById('wipe-type-label');
 
-    const updateCountdown = () => {
-        const now = new Date();
-        const nextForceWipe = getNextForceWipe(now);
-        const nextBiWeeklyWipe = getNextBiWeeklyWipe(now);
+    const translations = {
+        pl: {
+            wipeLabelForce: "Do następnego wipe’a:",
+            wipeInProgress: "Wipe w toku!",
+        },
+        en: {
+            wipeLabelForce: "Next wipe in:",
+            wipeInProgress: "Wipe in progress!",
+        }
+    };
 
-        let finalWipeDate, wipeTypeKey;
+    const getNextFirstThursday = (now) => {
+        let year = now.getFullYear();
+        let month = now.getMonth();
 
-        if (nextForceWipe < nextBiWeeklyWipe) {
-            finalWipeDate = nextForceWipe;
-            wipeTypeKey = 'wipeLabelForce';
-        } else {
-            finalWipeDate = nextBiWeeklyWipe;
-            wipeTypeKey = 'wipeLabelServer';
+        // Szukamy pierwszego czwartku miesiąca (godz. 20:00 czasu PL)
+        const findFirstThursday = (y, m) => {
+            const date = new Date(y, m, 1, 20, 0, 0);
+            while (date.getDay() !== 4) { // 4 = czwartek
+                date.setDate(date.getDate() + 1);
+            }
+            return date;
+        };
+
+        let nextDate = findFirstThursday(year, month);
+
+        // Jeśli już minął, bierzemy kolejny miesiąc
+        if (nextDate <= now) {
+            month++;
+            if (month > 11) {
+                month = 0;
+                year++;
+            }
+            nextDate = findFirstThursday(year, month);
         }
 
-        const diff = finalWipeDate - now;
+        return nextDate;
+    };
+
+    const updateCountdown = () => {
+        const now = new Date();
+        const nextWipeDate = getNextFirstThursday(now);
+        const diff = nextWipeDate - now;
 
         if (diff <= 0) {
             wipeElement.textContent = translations[lang].wipeInProgress;
-            wipeTypeElement.textContent = translations[lang].wipeRefresh;
+            wipeTypeElement.textContent = '';
             clearInterval(countdownInterval);
             return;
         }
@@ -295,45 +323,13 @@ function initializeWipeCountdown(lang) {
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
         wipeElement.textContent = `${d} ${lang === 'pl' ? 'dni' : 'days'} ${h}h ${m}m ${s}s`;
-        wipeTypeElement.textContent = translations[lang][wipeTypeKey];
-    };
-
-    // === Force Wipe: pierwszy czwartek miesiąca, 20:00 lokalnego czasu ===
-    const getNextForceWipe = (now) => {
-        let year = now.getFullYear();
-        let month = now.getMonth();
-
-        const findFirstThursday = (y, m) => {
-            let date = new Date(y, m, 1, 20, 0, 0); // 20:00 lokalnie
-            while (date.getDay() !== 4) { // 4 = czwartek
-                date.setDate(date.getDate() + 1);
-            }
-            return date;
-        };
-
-        let forceWipeDate = findFirstThursday(year, month);
-        if (forceWipeDate <= now) {
-            month++;
-            if (month > 11) { month = 0; year++; }
-            forceWipeDate = findFirstThursday(year, month);
-        }
-        return forceWipeDate;
-    };
-
-    // === Map Wipe: co 14 dni od 4.09.2025, 20:00 lokalnie ===
-    const getNextBiWeeklyWipe = (now) => {
-        const startDate = new Date(2025, 8, 4, 20, 0, 0); // 4 września 2025, 20:00
-        let nextWipe = new Date(startDate);
-
-        while (nextWipe <= now) {
-            nextWipe.setDate(nextWipe.getDate() + 14);
-        }
-        return nextWipe;
+        wipeTypeElement.textContent = translations[lang].wipeLabelForce;
     };
 
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 1000);
 }
+
 
     
     // === LOGIKA OKIEN MODALNYCH ===
@@ -398,6 +394,7 @@ function initializeWipeCountdown(lang) {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
 
