@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2>⚔️ Welcome to our RUST server! ⚔️</h2>
     <p>Our server was created by players for players, with the goal of letting everyone enjoy Rust gameplay with added features and enhancements that don’t compromise the original Rust experience. 🧡</p>
 
-    <h3>⏰ Bi-weekly wipe</h3>
-    <p>We reset everything except blueprints and RP points. Blueprints are reset monthly, and RP points expire after 6 months, keeping the system dynamic and fair. ✨</p>
+    <h3>⏰ Monthly wipe</h3>
+    <p>We reset everything except RP points and RP points expire after 6 months, keeping the system dynamic and fair. ✨</p>
 
     <h3>💰 How RP works</h3>
     <p>Earn RP not only by playing on the server but also by selling items and trading with other players. Develop your character as you wish through the SkillTree, choosing specializations in combat, crafting, or gathering. 🏹⛏️🌱</p>
@@ -393,6 +393,7 @@ function initializeWipeCountdown(lang = 'pl') {
     translatePage(initialLang);
     initializeWipeCountdown(initialLang);
 });
+
 
 
 
